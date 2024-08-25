@@ -1,0 +1,138 @@
+! X resource database.
+! https://github.com/owl4ce/dotfiles
+
+! URxvt configuration.
+URxvt.font:                       xft:MesloLGSDZ Nerd Font:size=13:autohint=true,\
+                                  xft:Noto Color Emoji:size=14:antialias=false,\
+                                  xft:Monospace:size=14:autohint=true,\
+                                  xft:Unifont:size=14:autohint=true
+URxvt.geometry:                   140x34
+URxvt.internalBorder:             20
+URxvt.cursorBlink:                true
+URxvt.cursorUnderline:            true
+URxvt.saveLines:                  8192
+URxvt.scrollBar:                  false
+URxvt.scrollBar_right:            true
+URxvt.scrollBar_floating:         false
+URxvt.scrollstyle:                plain
+URxvt.scrollWithBuffer:           false
+URxvt.urgentOnBell:               false
+URxvt.depth:                      32
+URxvt.iso14755:                   false
+URxvt.iconFile:                   /home/lulle/.icons/Gladient/terminal.png
+
+! Uncomment below if too much font spacing, and fix glyphs performance issues.
+!URxvt.letterSpace:                -1
+!URxvt.skipBuiltinGlyphs:          true
+
+! Disable printing the terminal contents when pressing PrintScreen.
+! The strings will be interpreted as if typed into the shell as-is.
+URxvt.print-pipe:                 "cat >/dev/null"
+
+! Clear the scrollback buffer cleanly, the shell built-in sequence replacement.
+URxvt.keysym.Control-Shift-L:     command:\033c
+
+! URxvt extensions.
+URxvt.perl-ext-common:            default,matcher,resize-font,tabbedex
+
+! Eval built-in extension.
+URxvt.keysym.Control-Shift-C:     eval:selection_to_clipboard
+URxvt.keysym.Control-Shift-V:     eval:paste_clipboard
+URxvt.keysym.Control-Up:          eval:scroll_up 1
+URxvt.keysym.Control-Down:        eval:scroll_down 1
+URxvt.keysym.Control-Home:        eval:scroll_to_top
+URxvt.keysym.Control-End:         eval:scroll_to_bottom
+
+! Matcher built-in extension.
+URxvt.keysym.Control-Shift-U:     matcher:select
+URxvt.url-launcher:               your_web_browser
+URxvt.matcher.button:             1
+URxvt.matcher.rend.0:             Uline fg7
+
+! Resize-font extension.
+URxvt.keysym.Control-minus:       resize-font:smaller
+URxvt.keysym.Control-plus:        resize-font:bigger
+URxvt.keysym.Control-equal:       resize-font:reset
+URxvt.keysym.Control-question:    resize-font:show
+URxvt.resize-font.step:           1
+
+! Tabbed-extended extension.
+URxvt.tabbedex.no-tabbedex-keys:  yes
+URxvt.tabbedex.new-button:        false
+URXvt.tabbedex.reopen-on-close:   yes
+URxvt.tabbedex.autohide:          yes
+URxvt.tabbedex.tabbar-fg:         5
+URxvt.tabbedex.tabbar-bg:         0
+URxvt.tabbedex.tab-fg:            2
+URxvt.tabbedex.tab-bg:            0
+URxvt.tabbedex.bell-fg:           0
+URxvt.tabbedex.bell-bg:           0
+URxvt.tabbedex.bell-tab-fg:       0
+URxvt.tabbedex.bell-tab-bg:       0
+URxvt.tabbedex.title-fg:          7
+URxvt.tabbedex.title-bg:          0
+URxvt.keysym.Control-Shift-T:     tabbedex:new_tab
+URxvt.keysym.Control-Shift-R:     tabbedex:rename_tab
+URxvt.keysym.Control-Shift-W:     tabbedex:kill_tab
+URxvt.keysym.Control-Next:        tabbedex:next_tab
+URxvt.keysym.Control-Prior:       tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Next:  tabbedex:move_tab_right
+URxvt.keysym.Control-Shift-Prior: tabbedex:move_tab_left
+
+! Color schemes.
+#define black0                    [100]#1D1F28
+#define black1                    #454545
+#define black2                    #454545
+#define black3                    #454545
+#define red0                      #F37F97
+#define red1                      #F37F97
+#define green0                    #5ADECD
+#define green1                    #5ADECD
+#define yellow0                   #F2A272
+#define yellow1                   #F2A272
+#define blue0                     #65aae6
+#define blue1                     #65aae6
+#define magenta0                  #C574DD
+#define magenta1                  #C574DD
+#define cyan0                     #79E6F3
+#define cyan1                     #79E6F3
+#define white0                    [100]#FDFDFD
+#define white1                    #FDFDFD
+#define white2                    #BEBEC1
+
+*.color1:                         red0
+*.color2:                         green0
+*.color3:                         yellow0
+*.color4:                         blue0
+*.color5:                         magenta0
+*.color6:                         cyan0
+
+*.color9:                         red1
+*.color10:                        green1
+*.color11:                        yellow1
+*.color12:                        blue1
+*.color13:                        magenta1
+*.color14:                        cyan1
+
+! Used by `terminal-set.sh`, do not change the following configuration.
+*.foreground:                     white0
+*.background:                     black0
+*.cursorColor:                    white0
+*.borderColor:                    black0
+
+*.color0:                         black2
+*.color7:                         white1
+
+*.color8:                         black3
+*.color15:                        white2
+
+!*.foreground:                     black0
+!*.background:                     white0
+!*.cursorColor:                    black0
+!*.borderColor:                    white0
+
+!*.color0:                         white1
+!*.color7:                         black2
+
+!*.color8:                         white2
+!*.color15:                        black3
