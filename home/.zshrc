@@ -53,22 +53,7 @@ z4h init || return
 path=(~/bin $path)
 
 # Export environment variables.
-export GPG_TTY=$TTY
-export PATH=/home/lulle/clang/bin:${PATH}
-export CC=clang
-export CXX=clang++
-export CC_LD=lld
-export CXX_LD=lld
-export AR=llvm-ar
-export NM=llvm-nm
-export STRIP=llvm-strip
-export OBJCOPY=llvm-objcopy
-export OBJDUMP=llvm-objdump
-export READELF=llvm-readelf
-export RANLIB=llvm-ranlib
-export HOSTCC=clang
-export HOSTCXX=clang++
-export HOSTAR=llvm-ar
+
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -101,28 +86,14 @@ compdef _directories md
 # Define aliases.
 alias tree='tree -a -I .git'
 alias pacu="sudo apt update"
-alias pac="sudo apt install`"
-alias pacconf="sudo nano /etc/apt/sources.list"
+alias pac="choco install"
 alias remf="sudo rm -R"
-alias pacr="sudo apt remove"
+alias pacr="choco uninstall"
 alias zshconf="sudo nano ~/.zshrc"
-alias kerneledit="cd ~/git-repos/linux-cachyos/linux-cachyos-cacule && nano PKGBUILD"
-alias pacs="apt search"
-alias pacsync="sudo apt upgrade"
-alias grubu="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias grubedit="sudo nano /etc/default/grub"
-alias sysstatus="sudo systemctl status"
-alias syse="sudo systemctl enable"
-alias syss="sudo systemctl start"
-alias sysd="sudo systemctl disable"
-alias journal="sudo nano /etc/systemd/journald.conf"
+alias pacs="choco search"
+
 # omz
 alias ..="cd ../"
-alias pacrc="sudo pacman -Rc"
-alias mk="sudo mkinitcpio -p linux-cachyos-rc-lto"
-alias maken="makepkg -scfi --config ~/makepkg.conf --skipinteg"
-alias pacauto="sudo pacman -Qtdq | sudo pacman -Rns -"
-alias polys="bash ~/.config/openbox/polybar/launch.sh"
 # Add flags to existing aliases.
 alias paclist="pacman -Qqe > pkglist.txt"
 alias sysconf="sudo nano /etc/sysctl.d/99-cachyos-settings.conf"
