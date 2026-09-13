@@ -1,0 +1,66 @@
+[general]
+# тут указываем путь до темы
+[window]
+opacity = 1.0
+startup_mode = "Windowed"
+# у терминала можно отключить оформление, что может пригодиться любителям тайлинга
+decorations = "Full"
+dynamic_title = true
+
+# Начальные размеры окна терминала при старте
+[window.dimensions]
+columns = 130
+lines = 30
+
+# Изменяем курсор
+[cursor.style]
+shape = "Beam"
+blinking = "Always"
+
+[scrolling]
+# если у вас мало памяти, то уменьшите значение
+history = 100000
+multiplier = 3
+
+[font]
+size = 12
+
+# Можно использовать свои шрифты для каждого варианта текста (normal, bold, italic)
+[font.normal]
+# Использовать лучше всего патченные Nerd-шрифты
+family = "CaskaydiaCove Nerd Font"
+
+# Для лучшей поддержи прозрачности в vim и тп
+[colors]
+transparent_background_colors = false
+
+[colors.primary]
+background = '#292C3E'
+foreground = '#EBEBEB'
+
+# Cursor colors
+[colors.cursor]
+text = '#EBEBEB'
+cursor = '#FF261E'
+
+# Normal colors
+[colors.normal]
+black   = '#0d0d0d'
+red     = '#FF301B'
+green   = '#A0E521'
+yellow  = '#FFC620'
+blue    = '#1BA6FA'
+magenta = '#8763B8'
+cyan    = '#21DEEF'
+white   = '#EBEBEB'
+
+# Bright colors
+[colors.bright]
+black   = '#6D7070'
+red     = '#FF4352'
+green   = '#B8E466'
+yellow  = '#FFD750'
+blue    = '#1BA6FA'
+magenta = '#A578EA'
+cyan    = '#73FBF1'
+white   = '#FEFEF8'

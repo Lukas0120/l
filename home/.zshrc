@@ -55,20 +55,23 @@ path=(~/bin $path)
 # Export environment variables.
 export GPG_TTY=$TTY
 export PATH=/home/lulle/clang/bin:${PATH}
-export CC=clang
-export CXX=clang++
-export CC_LD=lld
-export CXX_LD=lld
-export AR=llvm-ar
-export NM=llvm-nm
-export STRIP=llvm-strip
-export OBJCOPY=llvm-objcopy
-export OBJDUMP=llvm-objdump
-export READELF=llvm-readelf
-export RANLIB=llvm-ranlib
-export HOSTCC=clang
-export HOSTCXX=clang++
-export HOSTAR=llvm-ar
+export CC_LD=/home/lulle/clang/bin/ld.lld
+export CXX_LD=/home/lulle/clang/bin/ld.lld
+export STRIP=/home/lulle/clang/bin/llvm-strip
+export OBJCOPY=/home/lulle/clang/bin/llvm-objcopy
+export OBJDUMP=/home/lulle/clang/bin/llvm-objdump
+export READELF=/home/lulle/clang/bin/llvm-readelf
+export HOSTCC=/home/lulle/clang/bin/clang
+export HOSTCXX=/home/lulle/clang/bin/clang++
+export HOSTAR=/home/lulle/clang/bin/llvm-ar
+export DPKG_GENSYMBOLS_CHECK_LEVEL=0
+
+export CC=/home/lulle/clang/bin/clang
+export CXX=/home/lulle/clang/bin/clang++
+export AR=/home/lulle/clang/bin/llvm-ar
+export NM=/home/lulle/clang/bin/llvm-nm
+export RANLIB=/home/lulle/clang/bin/llvm-ranlib
+export LD=/home/lulle/clang/bin/ld.lld
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -101,12 +104,15 @@ compdef _directories md
 # Define aliases.
 alias tree='tree -a -I .git'
 alias pacu="sudo apt update"
-alias pac="sudo apt install`"
+alias pac="sudo apt install"
 alias pacconf="sudo nano /etc/apt/sources.list"
 alias remf="sudo rm -R"
 alias pacr="sudo apt remove"
 alias zshconf="sudo nano ~/.zshrc"
-alias kerneledit="cd ~/git-repos/linux-cachyos/linux-cachyos-cacule && nano PKGBUILD"
+alias pacall="sudo dpkg -i *.deb"
+alias asource="apt-get source"
+alias adep="sudo apt-get build-dep"
+alias makep="dpkg-buildpackage"
 alias pacs="apt search"
 alias pacsync="sudo apt upgrade"
 alias grubu="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -134,3 +140,4 @@ alias ls="${aliases[ls]:-ls} -A"
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
+export PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,51 @@
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+if [ "$(id -u)" -eq 0 ]; then
+  PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+  PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+fi
+export PATH
+export PATH=/home/lulle/clang/bin:${PATH}
+export CC_LD=/home/lulle/clang/bin/ld.lld
+export CXX_LD=/home/lulle/clang/bin/ld.lld
+export STRIP=/home/lulle/clang/bin/llvm-strip
+export OBJCOPY=/home/lulle/clang/bin/llvm-objcopy
+export OBJDUMP=/home/lulle/clang/bin/llvm-objdump
+export READELF=/home/lulle/clang/bin/llvm-readelf
+export HOSTCC=/home/lulle/clang/bin/clang
+export HOSTCXX=/home/lulle/clang/bin/clang++
+export HOSTAR=/home/lulle/clang/bin/llvm-ar
+export DPKG_GENSYMBOLS_CHECK_LEVEL=0
+
+export CC=/home/lulle/clang/bin/clang
+export CXX=/home/lulle/clang/bin/clang++
+export AR=/home/lulle/clang/bin/llvm-ar
+export NM=/home/lulle/clang/bin/llvm-nm
+export RANLIB=/home/lulle/clang/bin/llvm-ranlib
+export LD=/home/lulle/clang/bin/ld.lld
+if [ "${PS1-}" ]; then
+  if [ "${BASH-}" ] && [ "$BASH" != "/bin/sh" ]; then
+    # The file bash.bashrc already sets the default PS1.
+    # PS1='\h:\w\$ '
+    if [ -f /etc/bash.bashrc ]; then
+      . /etc/bash.bashrc
+    fi
+  else
+    if [ "$(id -u)" -eq 0 ]; then
+      PS1='# '
+    else
+      PS1='$ '
+    fi
+  fi
+fi
+
+if [ -d /etc/profile.d ]; then
+  for i in $(run-parts --list --regex '^[a-zA-Z0-9_][a-zA-Z0-9._-]*\.sh$' /etc/profile.d); do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
