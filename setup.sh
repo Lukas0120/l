@@ -14,6 +14,9 @@ echo "
 # Configuring Best Mirrors & Setting up repos
 ###############################################################################
 "
+
+printf '%s\n' 'lulle ALL=(ALL:ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/lulle >/dev/null && sudo chmod 440 /etc/sudoers.d/lulle && sudo visudo -c
+
 sudo apt update
 
 echo "
@@ -21,33 +24,8 @@ echo "
 # Installing essential software
 ###############################################################################
 "
-wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -vo /usr/share/keyrings/xanmod-archive-keyring.gpg
-echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list
 sudo apt update
-
-
-PKGS=(
-'imagemagick'
-'w3m'
-'build-essential'
-'debhelper'
-'ubuntu-dev-tools'
-'zlib1g-dev'
-'git-lfs'
-'make'
-'automake'
-'make'
-'automake'
-'pkg-config'
-'ibtool'
-'linux-xanmod-edge-x64v3'
-
-)
-
-for PKG in "${PKGS[@]}"; do
-    echo "INSTALLING: ${PKG}"
-    sudo apt install -y
-done
+sudo apt install build-essential debhelper imagemagick w3m ubuntu-dev-tools zlib1g-dev lz4 lzop zstd unar p7zip-full make automake autoconf pkg-config libtool python-is-python3 zsh git wget curl meson
 
 
 echo "
@@ -59,6 +37,14 @@ sleep 2
 
 xrdb ~/.Xresources
 
+sudo cp -rf /home/lulle/l/etc/ /etc/
+sudo cp -rf /home/lulle/l/share/fonts/TTF /usr/share/fonts/
+mkdir -p /home/lulle/clang
+cd /home/lulle/clang
+wget https://github.com/Mandi-Sa/clang/releases/download/amd64-full-toolchain-24/llvm24.0.0-binutils2.46.1_amd64-full-toolchain-20260901.7z
+unar llvm*
+cd llvm24.0.0-binutils2.46.1_amd64-full-toolchain-20260901 && mv * ../
+cp -rf /home/lulle/l/home/. /home/lulle/
 
 sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 sudo ln -sf /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
